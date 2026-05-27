@@ -6,347 +6,24 @@
     <title>SelfKart - Big Billion Days</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary: #2874f0;
-            --secondary: #fb641b;
-            --dark: #212121;
-            --light: #f1f3f9;
-            --white: #ffffff;
-        }
-
-        body {
-            background-color: var(--light);
-        }
-
-        /* Header */
-        header {
-            background: var(--primary);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .header-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo h1 {
-            color: var(--white);
-            font-size: 28px;
-            font-weight: 700;
-            font-style: italic;
-        }
-
-        .logo span {
-            color: #ffe500;
-        }
-
-        .search-bar {
-            flex: 1;
-            max-width: 600px;
-            display: flex;
-            margin: 0 30px;
-        }
-
-        .search-bar input {
-            flex: 1;
-            padding: 12px 15px;
-            border: none;
-            border-radius: 2px 0 0 2px;
-            font-size: 16px;
-        }
-
-        .search-bar button {
-            padding: 12px 25px;
-            background: var(--white);
-            border: none;
-            color: var(--primary);
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 0 2px 2px 0;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-
-        .header-actions a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .cart-btn {
-            background: var(--secondary);
-            padding: 8px 15px;
-            border-radius: 2px;
-        }
-
-        /* Categories Banner */
-        .categories-banner {
-            background: var(--white);
-            padding: 15px 0;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .categories-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-around;
-            padding: 0 20px;
-        }
-
-        .category-item {
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .category-item:hover {
-            transform: translateY(-3px);
-        }
-
-        .category-item img {
-            width: 64px;
-            height: 64px;
-            object-fit: contain;
-        }
-
-        .category-item p {
-            margin-top: 8px;
-            font-size: 14px;
-            color: var(--dark);
-            font-weight: 500;
-        }
-
-        /* Hero Banner */
-        .hero-banner {
-            max-width: 1400px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-
-        .hero-banner img {
-            width: 100%;
-            border-radius: 4px;
-        }
-
-        /* Product Grid */
-        .products-section {
-            max-width: 1400px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            background: var(--white);
-            padding: 15px 20px;
-            border-radius: 4px;
-        }
-
-        .section-header h2 {
-            font-size: 22px;
-        }
-
-        .view-all {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .product-card {
-            background: var(--white);
-            padding: 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: box-shadow 0.3s, transform 0.3s;
-        }
-
-        .product-card:hover {
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-            transform: translateY(-3px);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 200px;
-            object-fit: contain;
-            margin-bottom: 15px;
-        }
-
-        .product-info h3 {
-            font-size: 14px;
-            color: var(--dark);
-            margin-bottom: 8px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .product-rating {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            margin-bottom: 8px;
-        }
-
-        .rating-box {
-            background: var(--primary);
-            color: var(--white);
-            padding: 2px 6px;
-            border-radius: 2px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .rating-count {
-            color: #878787;
-            font-size: 12px;
-        }
-
-        .product-price {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .current-price {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--dark);
-        }
-
-        .original-price {
-            color: #878787;
-            text-decoration: line-through;
-            font-size: 14px;
-        }
-
-        .discount {
-            color: #388e3c;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .free-badge {
-            color: #388e3c;
-            font-size: 12px;
-            font-weight: 600;
-            margin-top: 5px;
-        }
-
-        /* Footer */
-        footer {
-            background: #172337;
-            color: var(--white);
-            padding: 50px 0 20px;
-            margin-top: 50px;
-        }
-
-        .footer-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-        }
-
-        .footer-section h4 {
-            margin-bottom: 20px;
-            color: #878787;
-            font-size: 14px;
-        }
-
-        .footer-section a {
-            display: block;
-            color: var(--white);
-            text-decoration: none;
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #454545;
-            margin-top: 40px;
-            padding-top: 20px;
-            text-align: center;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-wrap: wrap;
-            }
-            .search-bar {
-                order: 3;
-                margin: 15px 0 0;
-                max-width: 100%;
-            }
-            .categories-container {
-                overflow-x: auto;
-            }
-            .header-actions {
-                gap: 15px;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="header-container">
             <div class="logo">
-                <a href="index.html" style="text-decoration: none;">
+                <a href="index.html">
                     <h1>Self<span>Kart</span></h1>
                 </a>
             </div>
             
             <div class="search-bar">
-                <input type="text" placeholder="Search for products, brands and more">
-                <button><i class="fas fa-search"></i> Search</button>
+                <input type="text" id="searchInput" placeholder="Search for products, brands and more">
+                <button onclick="searchProducts()"><i class="fas fa-search"></i> Search</button>
             </div>
             
             <div class="header-actions">
-                <a href="#" class="cart-btn">
+                <a href="cart.html" class="cart-btn">
                     <i class="fas fa-shopping-cart"></i> Cart
                     <span id="cart-count">0</span>
                 </a>
@@ -358,6 +35,10 @@
     <!-- Categories -->
     <div class="categories-banner">
         <div class="categories-container">
+            <div class="category-item" onclick="filterProducts('mobiles')">
+                <img src="https://i.imgur.com/L3Mw4v7.png" alt="Mobiles">
+                <p>Mobiles</p>
+            </div>
             <div class="category-item" onclick="filterProducts('electronics')">
                 <img src="https://i.imgur.com/s2q9Q6E.png" alt="Electronics">
                 <p>Electronics</p>
@@ -376,37 +57,33 @@
             </div>
             <div class="category-item" onclick="filterProducts('toys')">
                 <img src="https://i.imgur.com/QJzGq8M.png" alt="Toys">
-                <p>Toys & More</p>
+                <p>Toys</p>
             </div>
             <div class="category-item" onclick="filterProducts('grocery')">
                 <img src="https://i.imgur.com/pj0E6P3.png" alt="Grocery">
                 <p>Grocery</p>
             </div>
-            <div class="category-item" onclick="filterProducts('mobiles')">
-                <img src="https://i.imgur.com/L3Mw4v7.png" alt="Mobiles">
-                <p>Mobiles</p>
-            </div>
-            <div class="category-item" onclick="filterProducts('flights')">
-                <img src="https://i.imgur.com/aFQ0MLZ.png" alt="Flights">
-                <p>Flights</p>
+            <div class="category-item" onclick="filterProducts('sports')">
+                <img src="https://i.imgur.com/aFQ0MLZ.png" alt="Sports">
+                <p>Sports</p>
             </div>
         </div>
     </div>
 
     <!-- Hero Banner -->
     <div class="hero-banner">
-        <img src="https://i.imgur.com/9Hdd3C8.jpg" alt="Big Billion Days Sale" style="width: 100%;">
+        <img src="https://i.imgur.com/9Hdd3C8.jpg" alt="Big Billion Days Sale">
     </div>
 
     <!-- Best Sellers Section -->
     <div class="products-section">
         <div class="section-header">
             <h2>Best Sellers</h2>
-            <a href="#" class="view-all">View All</a>
+            <a href="product.html" class="view-all">View All</a>
         </div>
         
-        <div class="product-grid" id="product-grid">
-            <!-- Products will be loaded by JavaScript -->
+        <div class="product-grid" id="best-sellers-grid">
+            <!-- Products loaded by JavaScript -->
         </div>
     </div>
 
@@ -414,11 +91,11 @@
     <div class="products-section">
         <div class="section-header">
             <h2>Deals of the Day</h2>
-            <a href="#" class="view-all">View All</a>
+            <a href="product.html" class="view-all">View All</a>
         </div>
         
         <div class="product-grid" id="deals-grid">
-            <!-- Products will be loaded by JavaScript -->
+            <!-- Products loaded by JavaScript -->
         </div>
     </div>
 
@@ -426,11 +103,11 @@
     <div class="products-section">
         <div class="section-header">
             <h2>Best Gadgets</h2>
-            <a href="#" class="view-all">View All</a>
+            <a href="product.html" class="view-all">View All</a>
         </div>
         
         <div class="product-grid" id="gadgets-grid">
-            <!-- Products will be loaded by JavaScript -->
+            <!-- Products loaded by JavaScript -->
         </div>
     </div>
 
@@ -451,15 +128,12 @@
                 <a href="#">Shipping</a>
                 <a href="#">Cancellation & Returns</a>
                 <a href="#">FAQ</a>
-                <a href="#">Report Infringement</a>
             </div>
             <div class="footer-section">
                 <h4>CONSUMER POLICY</h4>
                 <a href="#">Terms Of Use</a>
                 <a href="#">Security</a>
                 <a href="#">Privacy</a>
-                <a href="#">Sitemap</a>
-                <a href="#">Grievance Redressal</a>
             </div>
             <div class="footer-section">
                 <h4>SOCIAL</h4>
@@ -474,64 +148,6 @@
         </div>
     </footer>
 
-    <script>
-        // Product Data
-        const products = [
-            {
-                id: 1,
-                name: "Apple iPhone 15 Pro Max (256GB)|5G",
-                image: "https://i.imgur.com/G9M2QzQ.png",
-                rating: 4.5,
-                reviews: 1245,
-                price: 14999,
-                originalPrice: 18999,
-                discount: 21,
-                category: "mobiles"
-            },
-            {
-                id: 2,
-                name: "Sony WH-1000XM5 Wireless Noise Cancelling Headphones",
-                image: "https://i.imgur.com/hU3AqGQ.png",
-                rating: 4.7,
-                reviews: 3456,
-                price: 22990,
-                originalPrice: 29990,
-                discount: 23,
-                category: "electronics"
-            },
-            {
-                id: 3,
-                name: "Nike Air Max SC Men's Running Shoes",
-                image: "https://i.imgur.com/Y6Z5kNm.png",
-                rating: 4.3,
-                reviews: 892,
-                price: 4599,
-                originalPrice: 7999,
-                discount: 42,
-                category: "fashion"
-            },
-            {
-                id: 4,
-                name: "Samsung 55 inch Crystal 4K Smart LED TV",
-                image: "https://i.imgur.com/V8M7nQz.png",
-                rating: 4.4,
-                reviews: 2134,
-                price: 42999,
-                originalPrice: 65999,
-                discount: 35,
-                category: "electronics"
-            },
-            {
-                id: 5,
-                name: "Puma Men's T-Shirt",
-                image: "https://i.imgur.com/W4K9mNQ.png",
-                rating: 4.1,
-                reviews: 567,
-                price: 799,
-                originalPrice: 1599,
-                discount: 50,
-                category: "fashion"
-            },
-            {
-                id: 6,
-                name: "boAt Airdopes  ANC E
+    <script src="main.js"></script>
+</body>
+</html>
